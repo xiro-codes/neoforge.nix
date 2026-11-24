@@ -1,0 +1,41 @@
+{
+  "nodes": {
+    "neoforge": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1795474493,
+        "narHash": "sha256-7vU9bOaZNdnCJSV2KWEYOZweoFgL5pkmI8ML/+oLT0c=",
+        "type": "tarball",
+        "url": "https://github.com/AdrianLopez98/NeoForge/releases/download/v1.0.65/NeoForge-linux-x64.tar.gz"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://github.com/AdrianLopez98/NeoForge/releases/download/v1.0.65/NeoForge-linux-x64.tar.gz"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1795370043,
+        "narHash": "sha256-s/0jq8usZtLVOolYBwmyUmd3JsfAu7w3FU+a0dgMqSY=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "0dc498bfe49baeb18b0f9891e800b53bb2603193",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-26.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "neoforge": "neoforge",
+        "nixpkgs": "nixpkgs"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
