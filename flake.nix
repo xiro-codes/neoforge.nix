@@ -4,7 +4,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
     neoforge = {
-      url = "https://github.com/AdrianLopez98/NeoForge/releases/download/v1.0.65/NeoForge-linux-x64.tar.gz";
+      url = "https://github.com/xiro-codes/NeoForge/releases/download/v1.0.67-plus/NeoForge-linux-x64.tar.gz";
       flake = false;
     };
   };

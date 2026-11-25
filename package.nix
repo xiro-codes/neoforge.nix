@@ -1,9 +1,9 @@
 {
   pkgs,
   lib ? pkgs.lib,
-  version ? "1.0.65",
+  version ? "1.0.67-plus",
   kitSrc ? null,
-  sha256 ? "sha256-sFGnf3Kz5cQKnwA1E1TJjdlxRcQfmfYXKfkKAD03qGM=",
+  sha256 ? "sha256-OrPZsIC7vFg7WPcCEqLn+Rjwqm4TOLSQLZxZkGIWueM=",
   kitDir ? "$HOME/.neoforge/",
   ...
 }:
@@ -12,8 +12,8 @@ let
     if kitSrc != null then
       kitSrc
     else
-      pkgs.fetchurl {
-        url = "https://github.com/AdrianLopez98/NeoForge/releases/download/v${version}/NeoForge-linux-x64.tar.gz";
+      pkgs.fetchzip {
+        url = "https://github.com/xiro-codes/NeoForge/releases/download/v${version}/NeoForge-linux-x64.tar.gz";
         inherit sha256;
       };
 
@@ -31,7 +31,7 @@ let
     chmod -R u+w "$out/share/neoforge"
     rm -rf "$out/share/neoforge/datos" "$out/share/neoforge/forge.profile.properties"
 
-    printf "%s\n" "${version}" > "$out/share/neoforge/VERSION.txt"
+    printf "%s\n" "${kitSource}" > "$out/share/neoforge/VERSION.txt"
 
     if [ -f "$out/share/neoforge/bin/NeoForge" ]; then
       chmod +x "$out/share/neoforge/bin/NeoForge"
@@ -151,7 +151,7 @@ let
       mkdir -p "$KIT_DIR/datos"
 
       if [ "$KIT_DIR" != "$PWD" ] || [ ! -x "$KIT_DIR/bin/NeoForge" ]; then
-        SRC_VER="$(cat "$KIT_SRC/VERSION.txt" 2>/dev/null || echo "${version}")"
+        SRC_VER="$(cat "$KIT_SRC/VERSION.txt" 2>/dev/null || echo "${kitSource}")"
         CUR_VER="$(cat "$KIT_DIR/VERSION.txt" 2>/dev/null || echo "")"
         if [ ! -x "$KIT_DIR/bin/NeoForge" ] || [ "$SRC_VER" != "$CUR_VER" ]; then
           for item in bin lib res AVISOS.txt LICENSE-GPL3.txt README.txt add-to-menu.sh neoforge.png VERSION.txt; do
